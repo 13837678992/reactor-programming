@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Function;
 
 @FunctionalInterface
 interface MyInterface {
@@ -21,9 +22,18 @@ class MyInterfaceImpl implements MyInterface {
 
 public class Lambda {
     public static void main(String[] args) {
-        BiConsumer<String, String> biConsumer = (s1, s2) -> {
-            System.out.println(s1 + s2);
+        BiConsumer<Integer, Integer> biConsumer = (s1, s2) -> {
+            System.out.println("相加=" + (s1 + s2));
         };
+        BiConsumer<Integer, Integer> biConsumer2 = (s1, s2) -> {
+            System.out.println("相乘=" + s1 * s2);
+        };
+        biConsumer.andThen(biConsumer2).accept(3, 4);
+
+        Function<Integer,Integer> function = (i) -> {
+            return i * 2;
+        };
+        System.out.println(function.apply(3));
 
     }
     public static void bb(String[] args) {
