@@ -7,15 +7,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="chapter01-stream" />
+        <module name="stream (1)" />
+        <module name="stream (2)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="chapter01-stream" target="17" />
       <module name="chapter02-reactor" target="17" />
       <module name="chapter03-webflux" target="17" />
       <module name="chapter04-r2dbc" target="17" />
       <module name="chapter05-security" target="17" />
-      <module name="reactive-programming" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -25,6 +26,8 @@
       <module name="chapter03-webflux" options="-parameters" />
       <module name="chapter04-r2dbc" options="-parameters" />
       <module name="chapter05-security" options="-parameters" />
+      <module name="stream (1)" options="-parameters" />
+      <module name="stream (2)" options="-parameters" />
     </option>
   </component>
 </project>
