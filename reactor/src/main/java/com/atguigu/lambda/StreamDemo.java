@@ -14,7 +14,7 @@ public class StreamDemo {
         Map<Object,Object> of = Map.of("a", 1, "b", 2, "c", 3);
         of.keySet().stream();
         of.values().stream();
-        System.out.println("主线程" + Thread.currentThread().getName()
+        System.out.println("主线程" + Thread.currentThread().getName());
 
         long count =  Stream.of(1, 2, 3, 4, 5)
                 .filter(i -> (i > 2) )
