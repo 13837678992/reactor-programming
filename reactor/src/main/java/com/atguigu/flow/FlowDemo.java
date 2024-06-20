@@ -9,6 +9,22 @@ import java.time.Duration;
 
 
 public class FlowDemo {
+    public static void main(String[] args) {
+
+    }
+
+    public static void customSubscribe(String[] args) {
+        Flux.range(1, 10)
+                .map(i -> {
+                    if(i == 6){
+                        i = i/0;
+                    }
+
+                    return ("--" + i);
+                })
+                .onErrorComplete()
+                .subscribe(System.out::println,throwable -> System.out.println("throwable = " + throwable));
+    }
     public static void fluxMono(String[] args) {
         Flux.concat(Flux.range(1, 3), Flux.range(4, 3))
                 .log()
