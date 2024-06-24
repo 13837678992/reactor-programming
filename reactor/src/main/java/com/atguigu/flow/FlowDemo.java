@@ -10,7 +10,24 @@ import java.time.Duration;
 
 public class FlowDemo {
     public static void main(String[] args) {
+        new FlowDemo().limit();
+    }
+    public void limit(){
+        Flux.range(1, 1000)
+                .log()
+                .limitRate(100,80)
+                .subscribe();
+    }
 
+    public void buffer(){
+        Flux.range(1, 10)
+                .log()
+                .buffer(3)
+//                .log()
+                .doOnNext((item)->{
+                    System.out.println("----");
+                })
+                .subscribe(System.out::println);
     }
 
     public static void customSubscribe(String[] args) {
