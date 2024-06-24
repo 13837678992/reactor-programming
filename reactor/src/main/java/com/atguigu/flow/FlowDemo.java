@@ -6,11 +6,34 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.SignalType;
 
 import java.time.Duration;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class FlowDemo {
     public static void main(String[] args) {
-        new FlowDemo().limit();
+        new FlowDemo().generate();
+    }
+
+    public void generate(){
+//        AtomicInteger atomicInteger = new AtomicInteger();
+//        Flux.generate(synchronousSink -> {
+//            int i = atomicInteger.getAndIncrement();
+//            if (i < 100){
+//                synchronousSink.next("aaa"+i);
+//            }else{
+//                synchronousSink.complete();
+//            }
+//
+//        })
+//                .log()
+//                .subscribe();
+        Flux.generate(AtomicInteger::new,(state,sink)->{
+            int i = state.getAndIncrement();
+            sink.next("3 x " + i + " = " + 3*i);
+            if (i == 10) sink.complete();
+            return state;
+        }, System.out::println).log()
+                .subscribe();
     }
     public void limit(){
         Flux.range(1, 1000)
