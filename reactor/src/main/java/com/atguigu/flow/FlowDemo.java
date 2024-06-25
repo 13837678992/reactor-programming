@@ -14,6 +14,11 @@ public class FlowDemo {
         new FlowDemo().generate();
     }
 
+    public void create(){
+
+    }
+
+
     public void generate(){
 //        AtomicInteger atomicInteger = new AtomicInteger();
 //        Flux.generate(synchronousSink -> {
